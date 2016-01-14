@@ -1,0 +1,24 @@
+%intro
+Hello, I am ChatBot!
+Currently I only have two commands:
+"info <subject>" to learn about something.
+"hello" to greet you.
+%intro
+
+%info
+
+#self
+I am ChatBot, a bot created by spiral6, otherwise known as Shamee.
+#self
+
+#RWBY
+RWBY is a animated series by Rooster Teeth.
+It features 4 main characters, whos' names make up the titular acronym:
+Ruby, Weiss, Blake and Yang.
+#RWBY
+
+%info
+
+%unrecognized
+I do not understand this query. Blame Shamee, he's the one who hasn't programmed me to understand this.
+%unrecognized

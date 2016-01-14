@@ -8,7 +8,6 @@
 *.so
 *.sh
 *.json
-*.txt
 /bin
 /.settings
 .classpath
