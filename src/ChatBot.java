@@ -9,11 +9,19 @@ public class ChatBot {
 	
 	public ChatBot(String name) throws FileNotFoundException{
 		profile = loadFile(name);
+		System.out.println("-----------------------------------");
 		intro();
 	}
 	
 	public File loadFile(String s){
-		File profilesFolder = new File("/profiles");
+		File profilesFolder = new File("src/profiles");
+		if(profilesFolder.exists()){
+			//System.out.println("Yes, this folder exists.");
+		}
+		else{
+			//System.out.println(profilesFolder.getAbsolutePath());
+			//System.out.println("This folder doesn't exist because Eclipse is retarded.");
+		}
 		File[] files = profilesFolder.listFiles();
 		for(int i = 0; i < files.length; i++){
 			if(files[i].getName().equals(s + ".txt")){
@@ -25,17 +33,24 @@ public class ChatBot {
 	}
 	
 	public void MessageHandler(ArrayList<String> arr) throws FileNotFoundException{
-		for(int i = 0; i < arr.size(); i++){
-			String query = arr.get(i);
+		//for(int i = 0; i < arr.size(); i++){
+			String query = arr.get(0);
 			//query = aliases(query);
 			
-			
 			switch(query){
-				case "Hello": intro(); break;
-				case "info": String subject = arr.get(i+1); info(subject); break;
-				default: unrecognized();
+				case "hello": intro(); break;
+				case "info": 
+					try{
+					String subject = arr.get(1); info(subject); break;
+					}
+					catch(Exception e){
+						System.out.println("Error with your info command. Incorrect input.");
+						break;
+					}
+				
+				default: unrecognized(); break;
 			}
-		}
+		//}
 	}
 	
 	public String aliases(String s){
@@ -54,7 +69,7 @@ public class ChatBot {
 	
 	public void info(String subject) throws FileNotFoundException{
 		String info = loadDialogue(profile, "%info");
-		System.out.println(loadDialogue(info, subject));
+		System.out.println(loadDialogue(info, "#" + subject));
 	}
 	
 	public String loadDialogue(File f, String code) throws FileNotFoundException{
