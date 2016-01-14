@@ -33,7 +33,7 @@ public class ChatBot {
 	}
 	
 	public void MessageHandler(ArrayList<String> arr) throws FileNotFoundException{
-		//for(int i = 0; i < arr.size(); i++){
+		for(int i = 0; i < arr.size(); i++){
 			String query = arr.get(0);
 			//query = aliases(query);
 			
@@ -41,16 +41,15 @@ public class ChatBot {
 				case "hello": intro(); break;
 				case "info": 
 					try{
-					String subject = arr.get(1); info(subject); break;
+					String subject = arr.get(1); info(subject); return; 
 					}
 					catch(Exception e){
 						System.out.println("Error with your info command. Incorrect input.");
 						break;
 					}
-				
-				default: unrecognized(); break;
+				default: unrecognized(); return;
 			}
-		//}
+		}
 	}
 	
 	public String aliases(String s){
